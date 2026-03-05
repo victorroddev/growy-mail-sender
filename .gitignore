@@ -1,0 +1,106 @@
+# ========================
+# Variables de entorno
+# ========================
+.env
+.env.local
+.env.*.local
+
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+
+# Distribución / empaquetado
+dist/
+build/
+eggs/
+*.egg-info/
+*.egg
+.eggs/
+wheels/
+MANIFEST
+
+# ========================
+# Entornos virtuales
+# ========================
+venv/
+.venv/
+env/
+.env/
+ENV/
+virtualenv/
+
+# ========================
+# Testing & cobertura
+# ========================
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.coveragerc
+nosetests.xml
+test-results/
+
+# ========================
+# Logs
+# ========================
+*.log
+logs/
+log/
+
+# ========================
+# Uploads temporales
+# ========================
+uploads/
+tmp/
+temp/
+
+# ========================
+# IDEs y editores
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ========================
+# Sistemas operativos
+# ========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# ========================
+# Instancias Flask
+# ========================
+instance/
+.webassets-cache
+
+# ========================
+# Mypy / type checking
+# ========================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# ========================
+# Caches varios
+# ========================
+.cache/
+*.pid
+*.seed
+*.pid.lock
