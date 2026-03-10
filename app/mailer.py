@@ -14,3 +14,21 @@ def send_contact_email(data, files=[]):
         msg.attach(file.filename, file.content_type, file.read())
 
     mail.send(msg)
+
+def send_insurance_email(data, files=[]):
+    msg = Message(
+        subject=f"Insurance Validation - {data.get('provider', 'Unknown')}",
+        sender=current_app.config['MAIL_USERNAME'],
+        recipients=[current_app.config['MAIL_USERNAME']]
+    )
+    msg.body = (
+        f"Fulll Name: {data.get('fullName')}\n"
+        f"Email: {data.get('email')}\n"
+        f"Phone: {data.get('phone')}\n"
+        f"Provider: {data.get('provider')}\n"
+    )
+
+    for file in files:
+        msg.attach(file.filename, file.content_type, file.read())
+
+    mail.send(msg)
