@@ -15,17 +15,29 @@ def send_contact_email(data, files=[]):
 
     mail.send(msg)
 
+
 def send_insurance_email(data, files=[]):
+    delta_state = data.get('deltaState')
+    provider = data.get('provider', 'Unknown')
+    provider_label = f"{provider} — {delta_state}" if delta_state else provider
+
     msg = Message(
-        subject=f"Insurance Validation - {data.get('provider', 'Unknown')}",
+        subject=f"Insurance Verification - {provider_label}",
         sender=current_app.config['MAIL_USERNAME'],
         recipients=[current_app.config['MAIL_USERNAME']]
     )
     msg.body = (
-        f"Fulll Name: {data.get('fullName')}\n"
-        f"Email: {data.get('email')}\n"
-        f"Phone: {data.get('phone')}\n"
-        f"Provider: {data.get('provider')}\n"
+        f"=== POLICYHOLDER ===\n"
+        f"Full Name:      {data.get('fullName')}\n"
+        f"Date of Birth:  {data.get('dob')}\n"
+        f"Address:        {data.get('address')}\n"
+        f"Email:          {data.get('email')}\n"
+        f"Phone:          {data.get('phone')}\n\n"
+        f"=== INSURANCE ===\n"
+        f"Provider:       {provider_label}\n"
+        f"ID / SS:        {data.get('insuranceId')}\n"
+        f"Employer:       {data.get('employer')}\n"
+        f"Employer Phone: {data.get('employerPhone', 'N/A')}\n"
     )
 
     for file in files:
