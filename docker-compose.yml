@@ -1,0 +1,9 @@
+services:
+  flask-api:
+    build: .
+    container_name: flask-mail-api
+    restart: always
+    ports:
+      - "127.0.0.1:5000:5000"
+    env_file:
+      - .env
