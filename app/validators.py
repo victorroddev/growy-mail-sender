@@ -1,3 +1,5 @@
+import requests as http_requests
+
 def validate_contact(data):
     errors = []
     if not data.get('name'):
@@ -31,3 +33,14 @@ def validate_insurance(data):
     if data.get('provider', '').lower().find('delta') != -1 and not data.get('deltaState'):
         errors.append("State is required for Delta Dental plans")
     return errors
+
+
+def verify_turnstile(token: str) -> bool:
+    response = http_requests.post(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        data={
+            "secret": "0x4AAAAAACpk4_QZEp1BF01YPFsNp9VkqlM",
+            "response": token
+        }
+    )
+    return response.json().get("success", False)
