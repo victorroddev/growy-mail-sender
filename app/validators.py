@@ -1,3 +1,4 @@
+import os
 import requests as http_requests
 
 def validate_contact(data):
@@ -36,11 +37,9 @@ def validate_insurance(data):
 
 
 def verify_turnstile(token: str) -> bool:
+    secret = os.environ.get('TURNSTILE_SECRET')
     response = http_requests.post(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-        data={
-            "secret": "0x4AAAAAACpk4_QZEp1BF01YPFsNp9VkqlM",
-            "response": token
-        }
+        data={"secret": secret, "response": token}
     )
     return response.json().get("success", False)

@@ -7,6 +7,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USER')
     MAIL_PASSWORD = os.environ.get('MAIL_PASS')
     MAIL_RECIPIENT = os.environ.get('MAIL_RECIPIENT') 
+    TURNSTILE_SECRET = os.environ.get('TURNSTILE_SECRET')
     MAX_CONTENT_LENGTH = 10 * 1024 * 1024  # 10MB máximo
     ALLOWED_ORIGINS = os.environ.get('ALLOWED_ORIGINS', '*').split(',')
 
