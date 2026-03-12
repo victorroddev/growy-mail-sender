@@ -22,7 +22,7 @@ def contact():
     return jsonify({"ok": True, "message": "Correo enviado"}), 200
 
 #route for insurance modal.
-@bp.route('validate-insurance', methods=['POST'])
+@bp.route('/validate-insurance', methods=['POST'])
 def validate_insurace():
     data = request.form.to_dict()
     files = [request.files.get('frontID'), request.files.get('backID')]
